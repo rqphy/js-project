@@ -1,0 +1,25 @@
+{
+  "name": "js-project",
+  "version": "1.0.0",
+  "description": "Js - random project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rqphy/js-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rqphy/js-project/issues"
+  },
+  "homepage": "https://github.com/rqphy/js-project#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.5"
+  }
+}
