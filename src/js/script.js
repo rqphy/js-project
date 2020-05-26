@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 document.addEventListener("DOMContentLoaded", function () {
   class Model {
     constructor() {
@@ -7,24 +9,25 @@ document.addEventListener("DOMContentLoaded", function () {
           url: "#",
           background: "red",
           content: `
-						<div>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum quidem sequi aperiam numquam minima possimus? Atque possimus molestiae libero, voluptas quidem architecto facilis vero delectus nihil provident tempora velit.
-							<ul>
-								<li>lorem ipsum</li>
-								<li>dolor sit</li>
-								<li>amet consectetur</li>
-							</ul>
-						</div>
+          <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum quidem sequi aperiam numquam minima possimus? Atque possimus molestiae libero, voluptas quidem architecto facilis vero delectus nihil provident tempora velit.
+          <ul>
+          <li>lorem ipsum</li>
+          <li>dolor sit</li>
+          <li>amet consectetur</li>
+          </ul>
+          </div>
 					`,
           dynamisme: () => {
-            const li = document.querySelectorAll("li");
+            const lis = document.querySelectorAll("li");
+            console.log(Cookies.get("name"));
 
             function toUpper(element) {
               element.innerText = element.innerText.toUpperCase();
             }
 
-            li.forEach((element) => {
-              toUpper(element);
+            lis.forEach((li) => {
+              toUpper(li);
             });
           },
         },
@@ -62,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
 						</div>
 					`,
           dynamisme: () => {
-            window.addEventListener("scroll", (e) => {
+            console.log("test1");
+
+            window.onscroll = (e) => {
               let scrollTop = e.target.scrollingElement.scrollTop;
 
               console.log(scrollTop);
@@ -72,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
               ).style.backgroundPosition = `center calc(50% - ${
                 scrollTop / 2
               }px)`;
-            });
+            };
           },
         },
         {
@@ -80,13 +85,25 @@ document.addEventListener("DOMContentLoaded", function () {
           url: "#test2",
           background: "cyan",
           content: `
-          <section class="hero">
-            <div class="hero__content">
-              <h2 class="hero__title>Let's try something</h2>
-              <p class="hero__description">Here goes the description</p>
+          <section class="test2">
+            <div class="test2__content">
+              <h2 class="test2__title">Let's try something</h2>
+              <p class="test2__description">Here goes the description, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum quidem sequi aperiam numquam minima possimus? Atque possimus molestiae libero, voluptas quidem architecto facilis vero delectus nihil provident tempora velit.
+              </p>
             </div>
           </section>
           `,
+          dynamisme: () => {
+            console.log("test2");
+
+            const $content = document.querySelector(".test2__content");
+            console.log($content);
+
+            window.onscroll = () => {
+              const scrollValue = window.pageYOffset;
+              $content.style.transform = `skewX(${scrollValue}deg)`;
+            };
+          },
         },
       ];
     }

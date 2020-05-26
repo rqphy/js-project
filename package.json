@@ -21,5 +21,8 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.5"
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.1"
   }
 }
