@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import Granim from "granim";
 
 document.addEventListener("DOMContentLoaded", function () {
   class Model {
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
           url: "#",
           background: "red",
           content: `
+          <canvas id="granim-canvas"></canvas>
           <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum quidem sequi aperiam numquam minima possimus? Atque possimus molestiae libero, voluptas quidem architecto facilis vero delectus nihil provident tempora velit.
           <ul>
@@ -21,6 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
           dynamisme: () => {
             const lis = document.querySelectorAll("li");
             console.log(Cookies.get("name"));
+
+            const granimInstance = new Granim({
+              element: "#granim-canvas",
+              name: "granim",
+              opacity: [1, 1],
+              states: {
+                "default-state": {
+                  gradients: [
+                    ["#834D9B", "#D04ED6"],
+                    ["#1CD8D2", "#93EDC7"],
+                  ],
+                },
+              },
+            });
 
             function toUpper(element) {
               element.innerText = element.innerText.toUpperCase();
